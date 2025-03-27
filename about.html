@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Us</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Bootstrap JS (For Navbar Toggle) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+</head>
+<body>
+
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="home.html"><img src="./23-22-39-22_512.webp " alt="Fresh Fruits Logo" width="70" height="70"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="web.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="fruit.html">Fruits</a></li>
+                    <li class="nav-item"><a class="nav-link" href="order.html">Order</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link btn px-3" href="Login Register Form.html" target="_blank">Register / Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Us Section -->
+    <div class="container about-container mt-4">
+      <h1 class="text-center fw-bold">About Us</h1>
+      <p class="text-center lead">Delivering fresh, organic fruits straight from farms to your doorstep.</p>
+  
+      <div class="row mt-4">
+          <div class="col-md-6">
+              <h2 class="fw-bold">Who We Are</h2>
+              <p>We are a passionate team dedicated to bringing fresh, organic fruits to your home. With a mission to 
+                promote healthy eating, we source directly from farms.</p>
+          </div>
+          <div class="col-md-6">
+              <h2 class="fw-bold">Our Mission</h2>
+              <p>To provide high-quality, organic, and fresh fruits while ensuring sustainability and fair trade 
+                for our farmers.</p>
+          </div>
+      </div>
+  
+      <div class="row mt-4">
+          <h2 class="fw-bold text-center">Why Choose Us?</h2>
+          <div class="accordion" id="accordion">
+              
+              <!-- 100% Organic and Fresh Fruits -->
+              <div class="card my-2 container choose-us">
+                  <div class="card-header">
+                      <h3 class="card-link" data-bs-toggle="collapse" href="#collapseOne">
+                           100% Organic and Fresh Fruits 
+                      </h3>
+                  </div>
+                  <div id="collapseOne" class="collapse" data-bs-parent="#accordion">
+                      <div class="card-body">
+                          <div class="row">
+                              <div class="col-sm-4">
+                                  <img src="./organic.jpeg" alt="Organic Fruits" height="200px" width="200px">
+                              </div>
+                              <div class="col-sm-8">
+                                  <p>We provide 100% organic, chemical-free fruits grown naturally without synthetic pesticides 
+                                    or harmful chemicals. Sourced from trusted farms, our fruits retain their natural taste and 
+                                    nutrients, ensuring better health for you and your family. Enjoy pure, fresh produce that’s 
+                                    safe, healthy, and completely free from artificial additives.</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+  
+              <!-- Direct Farm-to-Home Delivery -->
+              <div class="card my-2 container choose-us">
+                  <div class="card-header">
+                      <h3 class="card-link" data-bs-toggle="collapse" href="#collapseTwo">
+                           Direct Farm-to-Home Delivery 
+                      </h3>
+                  </div>
+                  <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
+                      <div class="card-body">
+                          <div class="row">
+                              <div class="col-sm-8">
+                                  <p>We bring you the freshest fruits directly from the farm to your home, ensuring quality 
+                                    and purity. With no middlemen involved, you get naturally grown, organic produce straight 
+                                    from trusted farmers. Our farm-to-home delivery guarantees freshness, great taste, and 
+                                    convenience, so you always enjoy the best nature has to offer.</p>
+                              </div>
+                              <div class="col-sm-4">
+                                  <img src="./Directdelivery.webp" alt="Direct Delivery" height="200px" width="200px">
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+  
+              <!-- Affordable Pricing & Fast Delivery -->
+              <div class="card my-2 container choose-us">
+                  <div class="card-header">
+                      <h3 class="card-link" data-bs-toggle="collapse" href="#collapseThree">
+                           Affordable Pricing & Fast Delivery 
+                      </h3>
+                  </div>
+                  <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
+                      <div class="card-body">
+                          <div class="row">
+                              <div class="col-sm-4">
+                                  <img src="./Fastdelivery.webp" alt="Fast Delivery" height="200px" width="200px">
+                              </div>
+                              <div class="col-sm-8">
+                                  <p>We believe healthy, organic fruits should be accessible to everyone. That’s why we 
+                                    offer premium quality produce at affordable prices, ensuring great value for money. 
+                                    Our fast and reliable delivery service ensures your fresh fruits arrive on time, 
+                                    so you can enjoy health and convenience without any hassle.</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+  
+              <!-- Eco-Friendly Packaging -->
+              <div class="card my-2 container choose-us">
+                  <div class="card-header">
+                      <h3 class="card-link" data-bs-toggle="collapse" href="#collapseFour">
+                           Eco-Friendly Packaging 
+                      </h3>
+                  </div>
+                  <div id="collapseFour" class="collapse" data-bs-parent="#accordion">
+                      <div class="card-body">
+                          <div class="row">
+                              <div class="col-sm-8">
+                                  <p>We care about the environment as much as we care about your health. Our eco-friendly packaging 
+                                    reduces waste and protects nature while keeping your fruits fresh and safe. By choosing sustainable 
+                                    materials, we ensure our packaging is biodegradable and recyclable, helping you enjoy organic 
+                                    produce with a smaller carbon footprint.</p>
+                              </div>
+                              <div class="col-sm-4">
+                                  <img src="./eco-friendlypacking.webp" alt="Eco-Friendly Packaging" height="200px" width="200px">
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  
+    
+</body>
+</html>

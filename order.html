@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Order Fruits</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Bootstrap JS (For Navbar Toggle) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+</head>
+<body>
+
+    <!-- Bootstrap Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="home.html"><img src="./23-22-39-22_512.webp " alt="Fresh Fruits Logo" width="70" height="70"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="web.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="fruit.html">Fruits</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="order.html">Order</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link btn px-3" href="Login Register Form.html" target="_blank">Register / Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Order Page Content -->
+    <div class="order-container mt-5" >
+        <h1 class="text-center fw-bold">Order Your Fresh Fruits</h1>
+        <h2 class="text-center lead">Get fresh, organic fruits delivered to your doorstep!</h2>
+
+        <!-- Order Form -->
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-lg p-4">
+                    <h3 class="text-center mb-4">Place Your Order</h3>
+                    <form action="submit_order.php" method="post">
+                        
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name:</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address:</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number:</label>
+                            <input type="number" id="phone" name="phone" class="form-control" placeholder="Enter your phone number" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="fruit" class="form-label">Select Fruit:</label>
+                            <select id="fruit" name="fruit" class="form-select" required>
+                                <option value="apple">Apple</option>
+                                <option value="banana">Banana</option>
+                                <option value="mango">Mango</option>
+                                <option value="grapes">Grapes</option>
+                                <option value="orange">Orange</option>
+                                <option value="strawberry">Strawberry</option>
+                                <option value="guava">Guava</option>
+                                <option value="papaya">Papaya</option>
+                                <option value="cherry">cherry</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="quantity" class="form-label">Quantity:</label>
+                            <select id="quantity" name="quantity" class="form-control" required onchange="updateAmount()">
+                                <option value="0.25">250g</option>
+                                <option value="0.75">500g</option>
+                                <option value="1">1kg</option>
+                                <option value="2">2kg</option>
+                                <option value="5">5kg</option>
+                            </select>
+                        </div>
+                        
+
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Delivery Address:</label>
+                            <textarea id="address" name="address" class="form-control" placeholder="Enter your full address" required></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Delivery Date:</label>
+                            <input type="date" id="date" name="date" class="form-control" required>
+                        </div>
+
+                        <div class="text-center">
+                            <a href="payment.html" target="_blank" class="btn btn-lg">Place Order</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

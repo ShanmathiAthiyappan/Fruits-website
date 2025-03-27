@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Fruits</title>
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Bootstrap JS (For Navbar Toggle) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="home.html"><img src="./23-22-39-22_512.webp " alt="Fresh Fruits Logo" width="70" height="70"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="web.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="fruit.html">Fruits</a></li>
+                    <li class="nav-item"><a class="nav-link" href="order.html">Order</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                    <a class="nav-link btn px-3" href="Login Register Form.html" target="_blank">Register / Login</a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Heading -->
+    <div class="container text-center mt-4">
+        <h1 class="fw-bold">Fresh & Organic Fruits </h1>
+        <h2 class="lead">Hand-picked, high-quality, and 100% organic fruits just for you!</h2>
+    </div> 
+
+    <div id="demo" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+        </div>
+    
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./offbanner1.webp" class="d-block w-100" alt="Featured Floral Collections">
+            </div>
+            <div class="carousel-item">
+                <img src="./offbanner2.webp" class="d-block w-100" alt="Special Offers">
+            </div>
+            <div class="carousel-item">
+                <img src="./offbanner3.webp" class="d-block w-100" alt="Fast Delivery">
+            </div>
+        </div>
+    </div>
+
+    <!-- Fruits Display Section -->
+    <div class=" container fruit-container mt-4">
+        <div class="row">
+
+            <!-- Apple -->
+            <div class="col-md-4">
+                <div class="card text-center shadow">
+                    <img src="./apple.png" class="card-img-top" alt="Apple">
+                        <h3>Apple</h3>
+                        <p >Rich in fiber and vitamins, apples keep you healthy.</p>
+                    <div class="card-body">
+                        <div class="product-container">
+                            <select onchange="updatePrice(this)">
+                                <option value="250" data-price="36" data-original="48">250 Gms</option>
+                                <option value="500" data-price="70" data-original="90">500 Gms</option>
+                                <option value="1000" data-price="140" data-original="180">1 Kg</option>
+                            </select>
+                            <div class="cart">
+                                <div class="price-section">
+                                    <span class="original-price">₹48</span>
+                                    <span class="discounted-price">₹36</span>
+                                </div>
+                                <div class="button-container">
+                                    <button class="add-button" onclick="showPopup(this)">Add</button>
+                                    <div class="popup">One step closer! Item added to cart.</div>
+                                </div>
+                            </div>
+                        </div>               
+                    </div>
+                </div>
+            </div>           
+
+            <!-- Banana -->
+            <div class="col-md-4">
+                <div class="card text-center shadow">
+                    <img src="./banana.png" class="card-img-top" alt="Banana">
+                    <h3>Banana</h3>
+                    <p>A natural energy booster packed with potassium and fiber.</p>
+                    <div class="card-body">
+                        <div class="product-container">
+                            <select onchange="updatePrice(this)">
+                                <option value="250" data-price="10" data-original="12">250 Gms</option>
+                                <option value="500" data-price="20" data-original="25">500 Gms</option>
+                                <option value="1000" data-price="40" data-original="50">1 Kg</option>
+                            </select>
+                            <div class="cart">
+                            <div class="price-section">
+                                <span class="original-price">₹12</span>
+                                <span class="discounted-price">₹10</span>
+                            </div>
+                            <div class="button-container">
+                                <button class="add-button" onclick="showPopup(this)">Add</button>
+                                <div class="popup">One step closer! Item added to cart.</div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mango -->
+            <div class="col-md-4">
+                <div class="card text-center shadow">
+                    <img src="./mango.png" class="card-img-top" alt="Mango">
+                    <h3>Mango</h3>
+                    <p>The king of fruits, loaded with sweetness and nutrients.</p>
+                    <div class="card-body">
+                        <div class="product-container">
+                            <select onchange="updatePrice(this)">
+                                <option value="250" data-price="40" data-original="50">250 Gms</option>
+                                <option value="500" data-price="80" data-original="100">500 Gms</option>
+                                <option value="1000" data-price="160" data-original="200">1 Kg</option>
+                            </select>
+                            <div class="cart">
+                            <div class="price-section">
+                                <span class="original-price">₹50</span>
+                                <span class="discounted-price">₹40</span>
+                            </div>
+                            <div class="button-container">
+                                <button class="add-button" onclick="showPopup(this)">Add</button>
+                                <div class="popup">One step closer! Item added to cart.</div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orange -->
+            <div class="col-md-4">
+                <div class="card text-center shadow">
+                    <img src="./orange.png" class="card-img-top" alt="Orange">
+                    <h3>Orange</h3>
+                    <p> Bursting with vitamin C for a refreshing immunity boost.</p>
+                    <div class="card-body">
+                        <div class="product-container">
+                            <select onchange="updatePrice(this)">
+                                <option value="250" data-price="30" data-original="40">250 Gms</option>
+                                <option value="500" data-price="60" data-original="80">500 Gms</option>
+                                <option value="1000" data-price="120" data-original="160">1 Kg</option>
+                            </select>
+                            <div class="cart">
+                            <div class="price-section">
+                                <span class="original-price">₹40</span>
+                                <span class="discounted-price">₹30</span>
+                            </div>
+                            <div class="button-container">
+                                <button class="add-button" onclick="showPopup(this)">Add</button>
+                                <div class="popup">One step closer! Item added to cart.</div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grapes -->
+            <div class="col-md-4">
+                <div class="card text-center shadow">
+                    <img src="./—Pngtree—grape fruit dark purple summer_9058711.png" class="card-img-top" alt="Grapes">
+                    <h3>Grapes</h3>
+                    <p> Juicy and antioxidant-rich for a heart-healthy snack.</p>
+                    <div class="card-body">
+                        <div class="product-container">
+                            <select onchange="updatePrice(this)">
+                                <option value="250" data-price="25" data-original="35">250 Gms</option>
+                                <option value="500" data-price="50" data-original="70">500 Gms</option>
+                                <option value="1000" data-price="100" data-original="140">1 Kg</option>
+                            </select>
+                            <div class="cart">
+                            <div class="price-section">
+                                <span class="original-price">₹35</span>
+                                <span class="discounted-price">₹25</span>
+                            </div>
+                            <div class="button-container">
+                                <button class="add-button" onclick="showPopup(this)">Add</button>
+                                <div class="popup">One step closer! Item added to cart.</div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strawberry -->
+            <div class="col-md-4">
+                <div class="card text-center shadow">
+                    <img src="./straberry.jpg" class="card-img-top" alt="Strawberry">
+                    <h3>Strawberry</h3>
+                    <p>Sweet, tangy, and full of vitamin C and antioxidants.</p>
+                    <div class="card-body">
+                        <div class="product-container">
+                            <select onchange="updatePrice(this)">
+                                <option value="250" data-price="50" data-original="65">250 Gms</option>
+                                <option value="500" data-price="100" data-original="130">500 Gms</option>
+                                <option value="1000" data-price="200" data-original="260">1 Kg</option>
+                            </select>
+                            <div class="cart">
+                            <div class="price-section">
+                                <span class="original-price">₹65</span>
+                                <span class="discounted-price">₹50</span>
+                            </div>
+                            <div class="button-container">
+                                <button class="add-button" onclick="showPopup(this)">Add</button>
+                                <div class="popup">One step closer! Item added to cart.</div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Guava -->
+            <div class="col-md-4">
+                <div class="card text-center shadow">
+                    <img src="./Guava.png" class="card-img-top" alt="Strawberry">
+                    <h3>Guava</h3>
+                    <p> A superfruit with high fiber and vitamin C content.</p>
+                    <div class="card-body">
+                        <div class="product-container">
+                            <select onchange="updatePrice(this)">
+                                <option value="250" data-price="50" data-original="65">250 Gms</option>
+                                <option value="500" data-price="60" data-original="70">500 Gms</option>
+                                <option value="1000" data-price="90" data-original="100">1 Kg</option>
+                            </select>
+                            <div class="cart">
+                            <div class="price-section">
+                                <span class="original-price">₹50</span>
+                                <span class="discounted-price">₹40</span>
+                            </div>
+                            <div class="button-container">
+                                <button class="add-button" onclick="showPopup(this)">Add</button>
+                                <div class="popup">One step closer! Item added to cart.</div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Papaya -->
+            <div class="col-md-4">
+                <div class="card text-center shadow">
+                    <img src="./straberry.jpg" class="card-img-top" alt="Strawberry">
+                    <h3>Papaya</h3>
+                    <p>Enzyme-rich and great for digestion and glowing skin.</p>
+                    <div class="card-body">
+                        <div class="product-container">
+                            <select onchange="updatePrice(this)">
+                                <option value="250" data-price="50" data-original="65">250 Gms</option>
+                                <option value="500" data-price="100" data-original="130">500 Gms</option>
+                                <option value="1000" data-price="200" data-original="260">1 Kg</option>
+                            </select>
+                            <div class="cart">
+                            <div class="price-section">
+                                <span class="original-price">₹55</span>
+                                <span class="discounted-price">₹40</span>
+                            </div>
+                            <div class="button-container">
+                                <button class="add-button" onclick="showPopup(this)">Add</button>
+                                <div class="popup">One step closer! Item added to cart.</div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cherry  -->
+            <div class="col-md-4">
+                <div class="card text-center shadow">
+                    <img src="./cherry.png" class="card-img-top" alt="Strawberry">
+                    <h3>Cherry </h3>
+                    <p>Tiny, tasty, and packed with antioxidants for wellness.</p>
+                    <div class="card-body">
+                        <div class="product-container">
+                            <select onchange="updatePrice(this)">
+                                <option value="250" data-price="50" data-original="65">250 Gms</option>
+                                <option value="500" data-price="100" data-original="130">500 Gms</option>
+                                <option value="1000" data-price="200" data-original="260">1 Kg</option>
+                            </select>
+                            <div class="cart">
+                            <div class="price-section">
+                                <span class="original-price">₹95</span>
+                                <span class="discounted-price">₹70</span>
+                            </div>
+                            <div class="button-container">
+                                <button class="add-button" onclick="showPopup(this)">Add</button>
+                                <div class="popup">One step closer! Item added to cart.</div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>  
+        
+    <script src="script.js"></script>
+
+</body>
+</html>

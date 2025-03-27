@@ -1,0 +1,785 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Cormorant:ital,wght@0,300..700;1,300..700&family=Courgette&family=Creepster&family=Dancing+Script:wght@400..700&family=Gorditas:wght@400;700&family=Great+Vibes&family=Kings&family=Lavishly+Yours&family=Merienda:wght@300..900&family=Metal+Mania&family=Neonderthaw&family=Permanent+Marker&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Reenie+Beanie&family=Rochester&family=Rock+Salt&family=Satisfy&family=Tangerine:wght@400;700&family=Yatra+One&display=swap');
+
+/* ==================== GLOBAL STYLES ==================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  user-select: none;
+}
+
+body {
+  background-color: #f8f8f8;
+  color: #333;
+  text-align: center;
+  background-image: url('bgimg5.jpeg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow-x: hidden;
+  width: 100vw; /* Ensures no extra width */
+}
+
+/* ==================== LOADING PAGE ==================== */
+
+        /* Loading Screen Styles */
+   .loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+    transition: opacity 0.5s ease-in-out;
+    /*background: url(./loadpg.webp);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; */
+    /* background: linear-gradient(45deg, #819ab7, #80b4ef, #66a6ef, #4198fb); */
+}
+
+.spinner-border {
+    width: 350px;
+    height: 350px;
+    color: #e65c00;
+    box-shadow: 0 0 10px #e65c00, 0 0 20px #e65c00, 0 0 30px #e65c00;
+}
+
+
+
+/* Smooth fade-in animation */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+  .start-btn  {
+    font-family: "Metal Mania", system-ui;
+    font-size: 24px;
+    font-weight: bold;
+    color: #b33; /* Deep Red for more impact */
+    padding: 15px 40px;
+    border: 3px solid transparent;
+    border-radius: 15px;
+    background: linear-gradient(white, rgba(255, 255, 255, 0.9));
+    box-shadow: 0 4px 10px rgba(255, 100, 0, 0.5), 
+                0 6px 15px rgba(255, 100, 0, 0.3);
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    transform: skewX(-10deg);
+    transition: all 0.3s ease-in-out;
+}
+
+.start-btn :hover {
+    color: white;
+    background: linear-gradient(145deg, #ff6600, #ff3300);
+    box-shadow: 0 0 15px #ff6600, 
+                0 0 25px #ff3300;
+    transform: skewX(-10deg) scale(1.05);
+}
+
+.start-btn ::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 18px;
+    background: linear-gradient(45deg, #ff6600, #ff3300);
+    z-index: -1;
+    filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.start-btn :hover::before {
+    opacity: 1;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ==================== HEADINGS ==================== */
+
+h1{
+  font-family: "Gorditas", serif;
+  color: #f86401;
+  text-shadow: 2px 4px 6px #f0a36f;
+}
+
+h2{
+  color: #6d2d02;
+  font-family: "Courgette", cursive;
+}
+
+/* ==================== BUTTONS & A ==================== */
+button,a{
+  cursor: pointer;
+  font-family: "Playfair Display", serif;
+}
+
+/* ==================== POPUP NOTIFICATION ==================== */
+/* Styling for the popup */
+#welcomePopup {
+  position: fixed;
+  top: 25%;
+  left: 86%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  border: 2px solid #f86401;
+  box-shadow: 1px 2px 5px #f78337 ;
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  display: none; /* Initially hidden */
+}
+
+/* ==================== NAVIGATION BAR ==================== */
+.navbar {
+  list-style: none;
+  background: #222;
+  padding: 10px 0;
+  text-align: center;
+  position: fixed;  /* Keeps it fixed while scrolling */
+  top: 0;
+  left: 0;
+  width: 100%;  /* Full width */
+  display: flex;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensures it stays above other elements */
+}
+
+/* Push content down to avoid being hidden behind navbar */
+body {
+    padding: 100px; /* Adjust based on navbar height */
+}
+
+.navbar li {
+  display: inline;
+  margin: 0 20px;
+}
+
+.navbar li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: "Philosopher", sans-serif;
+  transition: color 0.3s;
+}
+
+.navbar li a:hover {
+  color: #ff7700;
+  box-shadow: 1px 2px 5px #f78337 ;
+}
+
+.navbar .btn {
+  padding: 8px 15px;
+  background: #f86401;
+  border: 1px solid #e65c00;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.navbar .btn:hover {
+  color: white;
+  background: #e65c00;
+}
+
+/* ==================== HOME PAGE ==================== */
+
+.home-container {
+  max-width: 50%; /* Adjust width as needed */
+  margin-left: auto;
+  margin-right: 5%; /* Adds some spacing from the right edge */
+  padding: 20px; /* Adds spacing around the content */
+  text-align: center; /* Align text to the right */
+}
+
+.home-container h1{
+  font-family: "Rock Salt", cursive;
+}
+
+.welcome-text p{
+  font-family: "Philosopher", sans-serif;
+  font-size: 25px;
+  text-align: center;
+  color: green;  
+}
+
+.explore a { 
+  display: inline-block; /* Allows padding & border-radius to work */
+  padding: 15px 35px;
+  border-radius: 30px;
+  background-color: #ff7417;
+  text-decoration: none;
+  color: white;
+  box-shadow: 1px 5px 10px #959595;
+  margin-top: 20px;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.explore a:hover {
+  background-color: #fb6603;
+  animation: homebtn2 1s ease-in-out;
+}
+
+/*Keyframes */
+@keyframes homebtn2 {
+  from { box-shadow: 1px 5px 10px #959595; }
+  to { box-shadow: 1px 10px 20px #f0f0f0; }
+}
+
+/* ==================== FRUIT PAGE ==================== */
+
+/* Center the carousel */
+.carousel {
+  margin: auto;
+  padding: 30px;
+  max-height: 500px;
+  max-width: 700px;
+  text-align: center;
+}
+
+/* Make sure images fit properly */
+.carousel img {
+  object-fit: cover;
+  max-height: 500px;
+  width: 100%;
+}
+
+.carousel-indicators button{
+  margin-bottom: 30px;
+}
+
+.carousel-indicators button:active{
+  background-color: #d75500;
+}
+
+.fruit-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  margin: 50px auto; 
+  width: 80%;
+}
+
+.fruit-container.lead{
+  color: #f78337;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.fruit-container .card {
+  margin: 10px auto;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  background: white;
+  padding: 10px;
+  box-shadow: 0px 2px 4px rgba(30, 30, 30, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.fruit-container .card:active {
+  transform: scale(1.01);
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.fruit-container .card img {
+  margin-top: 20px;
+  width: 100%;
+  height: 150px;
+}
+
+.fruit-container .card h3 {
+  font-size: 30px;
+  margin: 10px 0;
+  font-family: "Playfair Display", serif;
+}
+
+.fruit-container .card p{
+  font-family: "Playfair Display", serif;;
+  color: #525252;
+}
+
+.product-container {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+select {
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.price-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: gray;
+  font-size: 14px;
+  margin-left: 20px;
+}
+
+.discounted-price {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 20px;
+
+}
+
+.add-button {
+  background: orange;
+  border: none;
+  padding: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-left: 50px;
+  width: 100%;
+}
+
+.add-button:hover{
+  color: white;
+  background: rgb(206, 134, 0);
+}
+
+.cart{
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.button-container {
+  position: relative; /* Ensure proper positioning */
+  display: inline-block;
+}
+
+.popup {
+  display: none;
+  position: absolute;
+  top: 40px; /* Position below the button */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-family: "Gorditas", serif;
+  white-space: nowrap;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ==================== ORDER PAGE ==================== */
+.order-container h3 {
+  color: #f86401;
+  font-family: "Comic Neue", cursive;
+  font-weight: 800;
+  position: relative;
+  display: inline-block;
+}
+
+.order-container h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 5px; /* Start as a small dot */
+  height: 2px;
+  background-color: #f86401;
+  animation: underlineExpand 4s ease-in-out infinite;
+}
+
+/* Keyframes for animation */
+@keyframes underlineExpand {
+  0% {
+      width: 0px; /* Start as a dot */
+  }
+  100% {
+      width: 100%; /* Expands to full underline */
+  }
+}
+
+.order-container .card{
+  display: flex;
+  margin: 30px auto;
+  width: 60%;
+}
+
+.order-container-form {
+  text-align: center;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.order-container-form label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.order-container-form input,
+.order-container-form select,
+.order-container-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.order-container-form textarea {
+  height: 100px;
+}
+
+.order-container .btn {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  border: none;
+  background-color: #fb6f0c;
+  box-shadow: 1px 5px 10px #959595; 
+  color: white;
+  font-size: 16px;
+}
+
+.order-container .btn:hover {
+  background-color: #fe8027;
+  box-shadow: 1px 5px 10px #d2d2d2; 
+}
+
+/* ==================== PAYMENT PAGE ==================== */
+
+/* Centering the Payment Form */
+.payment-container {
+  width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Heading Style */
+.payment-container h2 {
+  color: #f86401;
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+/* Input Fields Styling */
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.input-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Row for Expiry and CVV */
+.input-row {
+  display: flex;
+  gap: 10px;
+}
+
+.input-row .input-group {
+  flex: 1;
+}
+
+.amount-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  background: #fff;
+}
+
+.currency {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 5px;
+  color: #333;
+}
+
+.amount-container input {
+  border: none;
+  outline: none;
+  font-size: 16px;
+  width: 100%;
+}
+
+/* Pay Now Button */
+.pay-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #f86401;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.pay-button:hover {
+  background-color: #d75500;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .payment-container {
+      width: 90%;
+  }
+}
+
+/* ==================== ABOUT  PAGE ==================== */
+
+.about-container p{
+  font-family: cursive;
+}
+
+.about-container h3{
+  font-family: "Yatra One", system-ui;
+}
+
+.choose-us {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background-color: transparent;
+  width: 1000px;
+  border: none; /* Removes the border */
+  box-shadow: none; /* Ensures no shadow effect */
+}
+
+.card-header{
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.card-body{
+  width: 900px;
+}
+
+.about-container li{
+  padding: 0px 15px !important; /* Reduce padding */
+  background-color: transparent !important; /* Removes any background */
+  cursor: pointer;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.about-container .card img{
+  border-radius: 10px;
+}
+
+/* ==================== CONTACT PAGE ==================== */
+.contact-container {
+  width: 50%;
+  margin: 40px auto;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contact-container label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+  text-decoration: 1px solid underline;
+  text-underline-offset: 3px;
+}
+
+.contact-container input,
+.contact-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contact-container textarea {
+  height: 100px;
+}
+
+.contact-container button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  border: none;
+  color: white;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.contact-container a{
+  color: #424242;
+  text-decoration: none;
+  font-family: "Philosopher", sans-serif;
+}
+
+/* ==================== PRIVACY POLICY ==================== */
+.privacy-policy {
+  width: 100%;
+  margin: 30px auto;
+  text-align: left;
+  background: white;
+  padding: 20px;
+}
+
+.privacy-policy h3 {
+  color: #601f00;
+  font-family: "Satisfy", cursive;
+}
+
+.privacy-policy h4{
+  color: #b83a00;
+  font-family: "Yatra One", system-ui;
+}
+
+.privacy-policy p{
+  color: #ff6f2c;
+  font-family: "Philosopher", sans-serif;
+}
+
+.privacy-policy {
+  margin-top: 20px;
+}
+
+.privacy-policy .btn{
+  font-family: cursive;
+  background-color: #ed7525;
+  color: black;
+}
+
+.privacy-policy .btn:hover{
+  background-color: #d75500;
+  color: white;
+  box-shadow: 0 4px 6px #f87a25;
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 30px;
+}
+
+.footer p {
+  font-size: 16px;
+}
+
+/*---------------------MEDIA QUERY -------------------*/
+/* Adjust styles for laptopscreen */
+
+
+
+/* Adjust styles for tablets */
+
+@media screen and (max-width: 768px){
+  .home-container h1{
+    font-size: 50px;
+  }
+  
+  .home-container p{
+    font-size: 30px;
+  }
+  
+  .home-container {
+    max-width: 100%; /* Adjust width as needed */
+  }
+  
+  .intro{
+    font-size: 20px;  
+  }
+  
+  .explore a { 
+    padding: 5px 25px;
+  }
+
+  .fruit-container .row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fruit-container .col-md-4 {
+    width: 100%; /* Make each card take full width */
+    display: flex;
+    justify-content: center;
+}
+
+.fruit-container .card {
+    width: 90%; /* Adjust card width to fit screen properly */
+    max-width: 350px; /* Limit max width for better alignment */
+    margin-bottom: 20px; /* Add space between cards */
+}
+
+.order-container .card {
+  width: max-content;
+}
+
+.accordion .choose-us{
+  width: 350px;
+  text-align: center;
+}
+
+.container .contact-container{
+  width: max-content;
+}
+
+}
