@@ -189,6 +189,11 @@ body {
   box-shadow: 1px 2px 5px #f78337 ;
 }
 
+.navbar li .active{
+  text-decoration: 1px underline #f78337 ;
+  text-underline-offset: 5px;
+}
+
 .navbar .btn {
   padding: 8px 15px;
   background: #f86401;

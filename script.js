@@ -80,7 +80,7 @@ function storeOrder() {
     window.location.href = "payment.html";
 }
 
-//--------------------------------------------------------------------------- SHO WTHE PRICE AMOUNT ON THE PAYMENT 
+//--------------------------------------------------------------------------- SHOW THE PRICE AMOUNT ON THE PAYMENT 
 
 document.addEventListener("DOMContentLoaded", function() {
     let totalPrice = localStorage.getItem("totalPrice");
@@ -90,3 +90,5 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("totalPrice").innerText = "0";
     }
 });
+
+//--------------------------------------------------------------------------- LOGIN REDIRECT

@@ -132,7 +132,7 @@
                 const storedPassword = localStorage.getItem('userPassword');
                 if (email === storedEmail && password === storedPassword) {
                     alert('Login successful! Redirecting...');
-                    window.location.href = 'web.html';
+                    window.location.href = 'order.html';
                 } else {
                     alert('Invalid email or password!');
                 }
@@ -148,6 +148,14 @@
                 togglePassword.classList.replace('fa-eye', 'fa-eye-slash');
             }
         });
+
+
+    function login() {
+        localStorage.setItem("isLoggedIn", "true"); // Store login session
+        alert("Login successful! Redirecting to Order Page...");
+        window.location.href = "order.html"; // Redirect to order page
+    }
+
     </script>
 
 </body>
