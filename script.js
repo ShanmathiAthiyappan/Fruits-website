@@ -62,7 +62,7 @@ function showPopup(button) {
     }, 2000);
 }
 
-//--------------------------------------------------------------------------- SHO WTHE PRICE AMOUNT ON THE PAYMENT 
+//--------------------------------------------------------------------------- SHOW THE PRICE AMOUNT ON THE PAYMENT 
 
 function storeOrder() {
     let fruitSelect = document.getElementById("fruit");
