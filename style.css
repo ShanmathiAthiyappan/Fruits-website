@@ -519,7 +519,7 @@ select {
 
 @media (max-width: 992px) {   /* Tablet */
   .order-container .card {
-    width: 85%;
+    width: 90%;
   }
 }
 /* ==================== PAYMENT PAGE ==================== */
@@ -844,6 +844,7 @@ select {
 /* Tablet View */
 @media (max-width: 992px) {
   .privacy-policy {
+    width: 85%;
     padding: 15px;
   }
 
