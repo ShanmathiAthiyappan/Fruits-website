@@ -651,6 +651,7 @@ select {
   justify-content: center;
   text-align: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .card-body{
@@ -669,7 +670,7 @@ select {
 }
 
 @media (max-width: 576px) {
-  .about-container h1, h2{
+  .about-container h2{
     font-size: 90%;
   }
 
@@ -697,7 +698,7 @@ select {
 }
 
 @media (max-width: 992px) {   /* Tablet */
-  .about-container h1, h2{
+  .about-container h2{
     font-size: 95%;
   }
 
@@ -708,6 +709,10 @@ select {
   .choose-us {
     flex-direction: column;
     align-items: center;
+  }
+
+  .card-header h3{
+    font-size: 85%;
   }
 
   .card {
@@ -727,7 +732,7 @@ select {
 
 /* ==================== CONTACT PAGE ==================== */
 .contact-container {
-  width: 65%;
+  width: 50%;
   margin: 40px auto;
   padding: 20px;
   border: 2px solid #ccc;
@@ -781,7 +786,7 @@ select {
 
 @media (max-width: 576px) {
   .contact-container {
-    width: 90%;
+    width: 100%;
     padding: 5px;
   }
 
@@ -798,7 +803,7 @@ select {
 
 /* ==================== PRIVACY POLICY ==================== */
 .privacy-policy {
-  width: 100%;
+  width: 90%;
   margin: 30px auto;
   text-align: left;
   background: white;
