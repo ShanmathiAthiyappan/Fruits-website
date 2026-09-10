@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contact Us</title>
+    <title>Contact Us - Farm2Bite</title>
 
     <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -29,7 +29,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="fruit.html">Fruits</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Login Register Form.html">Order</a></li>
+                    <li class="nav-item"><a class="nav-link" href="order.html">Order</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
                     <li class="nav-item"><a class="nav-link active" href="contact.html">Contact Us</a></li>
                     <li class="nav-item">
@@ -41,81 +41,68 @@
     </nav>
 
     <!-- Contact Page Content -->
-    <div class="container">
+    <div class="container my-5">
         <div class="row justify-content-center">
-            <div class="col-md-6 contact-container">
-                <h2 class="text-center">Contact Us </h2>
-                <p class="text-center">We’d love to hear from you!</p>
+            <div class="col-md-8 contact-container">
+                <h2 class="text-center">Let's Connect!</h2>
+                <p class="text-center text-muted">Questions about today's harvest, deliveries, or bulk orders? We're here to help.</p>
 
-                <div class="mb-3">
-                    <label class="fw-bold">Phone:</label> 
-                    <p> <a href="tel:+919078564321"> 📞 9078564321 </a></p>
+                <div class="row my-4 text-center">
+                    <div class="col-sm-6 mb-3">
+                        <div class="p-3 bg-light rounded border">
+                            <label class="fw-bold d-block">Quick Support</label> 
+                            <a href="tel:+919078564321" class="fs-5 text-dark fw-bold">📞 +91 90785 64321</a>
+                            <p class="small text-muted mb-0">Daily: 8:00 AM – 8:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="p-3 bg-light rounded border">
+                            <label class="fw-bold d-block">Direct Email</label> 
+                            <a href="mailto:Farm2Bite@gmail.com" class="fs-5 text-dark fw-bold">📧 Farm2Bite@gmail.com</a>
+                            <p class="small text-muted mb-0">Response within 2 hours</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mb-3">
-                    <label class="fw-bold">Email:</label> 
-                    <p> <a href="https://mail.google.com/mail/?view=cm&fs=1&to=Farm2Bite@gmail.com&su=Inquiry&body=Hello,%20I%20need%20more%20information." target="_blank"> 📧 Farm2Bite@gmail.com </a></p>
+                <!-- Simple Quick Message Form (Pure CSS validation) -->
+                <div class="card p-3 border shadow-sm mb-4">
+                    <h5 class="fw-bold mb-3">Send us a Note</h5>
+                    <form onsubmit="alert('Thank you! Our farm support team will contact you shortly.'); this.reset(); return false;">
+                        <div class="mb-2">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="mb-2">
+                            <input type="email" class="form-control" placeholder="Your Email Address" required>
+                        </div>
+                        <div class="mb-2">
+                            <textarea class="form-control" rows="3" placeholder="Tell us how we can assist you..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn w-100" style="background:#f86401; color:white; font-weight:bold;">Send Message</button>
+                    </form>
                 </div>
-
-                <!-- <div class="search-container">
-                    <input type="search" placeholder="Search here...">
-                </div>  -->
 
                 <!-- Privacy Policy Toggle -->
                 <div class="privacy-policy">
                     <button class="btn w-100" type="button" data-bs-toggle="collapse" data-bs-target="#privacyPolicy">
-                        View Privacy Policy
+                        View Privacy & Quality Policy
                     </button>
 
                     <div id="privacyPolicy" class="collapse mt-3">
-                        <h3>Privacy Policy</h3>
-                        <h4>1. Information We Collect</h4>
-                        <p><strong>a. Personal Information:</strong></p>
-                        <ul>
-                            <li>Name, email address, phone number, and shipping address.</li>
-                            <li>Payment details (secured through third-party providers).</li>
-                        </ul>
-                        
-                        <p><strong>b. Non-Personal Information:</strong></p>
-                        <ul>
-                            <li>Browser type, device information, and IP address.</li>
-                            <li>Pages visited, time spent, and analytics.</li>
-                        </ul>
+                        <h3>Our Trust Promise</h3>
+                        <h4>1. Natural Produce Policy</h4>
+                        <p>We guarantee 100% replacement or refund if any fruit arrives damaged, bruised, or unripe.</p>
 
-                        <h4>2. How We Use Your Information</h4>
-                        <ul>
-                            <li>Process and deliver orders.</li>
-                            <li>Provide customer support.</li>
-                            <li>Improve our website experience.</li>
-                        </ul>
+                        <h4>2. Data Security</h4>
+                        <p>Your address, contact numbers, and delivery details are encrypted and never sold or shared with advertisers.</p>
 
-                        <h4>3. Sharing of Information</h4>
-                        <p>We do not sell personal data. We only share it with:</p>
-                        <ul>
-                            <li>Service providers (for delivery and payment processing).</li>
-                            <li>Legal authorities (if required by law).</li>
-                        </ul>
-
-                        <h4>4. Data Security</h4>
-                        <p>We use secure servers and encryption, but users should also safeguard their data.</p>
-
-                        <h4>5. Your Rights</h4>
-                        <ul>
-                            <li>Access, update, or delete your personal information.</li>
-                            <li>Opt out of promotional communications.</li>
-                        </ul>
-
-                        <h4>6. Children’s Privacy</h4>
-                        <p>Our site is not intended for children under 13.</p>
-
-                        <h4>7. Changes to This Policy</h4>
-                        <p>We may update this policy from time to time.</p>
+                        <h4>3. Transparent Delivery</h4>
+                        <p>All items are weighed accurately before packing. Receipts with transparent price breakdowns accompany every order.</p>
                     </div>
-                    
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>

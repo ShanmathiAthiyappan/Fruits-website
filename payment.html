@@ -3,45 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Payment</title>
+    <title>Secure Payment - Farm2Bite</title>
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+      .pay-tab-nav {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+      .pay-tab-nav button {
+        flex: 1;
+        padding: 8px 4px;
+        font-size: 13px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        background: #f9f9f9;
+      }
+      .pay-tab-nav button.active {
+        background: #f86401;
+        color: white;
+        border-color: #f86401;
+        font-weight: bold;
+      }
+      .method-box {
+        display: none;
+      }
+      .method-box.active {
+        display: block;
+      }
+    </style>
 </head>
 <body>
     <div class="payment-container">
-        <h2>Secure Payment</h2>
+        <h2>Complete Your Payment</h2>
+        
+        <!-- Total Amount Display -->
+        <div class="amount-container mb-3" style="background: #fff8f2; border: 2px solid #f86401; justify-content: center; padding: 12px;">
+            <span class="currency" style="color: #f86401; font-size: 24px;">₹</span>
+            <input type="text" id="totalPrice" readonly style="font-size: 24px; font-weight: bold; color: #f86401; width: 120px; text-align: left;">
+        </div>
+
+        <!-- Payment Method Tabs (Simple JS toggle) -->
+        <div class="pay-tab-nav">
+            <button type="button" class="active" onclick="switchPayment('upi', this)">UPI / QR</button>
+            <button type="button" onclick="switchPayment('card', this)">Card</button>
+            <button type="button" onclick="switchPayment('cod', this)">Cash on Delivery</button>
+        </div>
+
         <form id="payment-form">
-            <div class="input-group">
-                <label for="card-number">Card Number</label>
-                <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
-            </div>
-            
-            <div class="input-row">
+            <!-- 1. UPI Section -->
+            <div id="upi-method" class="method-box active">
                 <div class="input-group">
-                    <label for="expiry">Expiry Date</label>
-                    <input type="text" id="expiry" placeholder="MM/YY" required>
+                    <label for="upi-id">Enter UPI ID (GooglePay / PhonePe / Paytm)</label>
+                    <input type="text" id="upi-id" placeholder="username@okhdfcbank">
                 </div>
+                <p style="font-size: 13px; color: #777;">You will receive a payment request on your UPI app.</p>
+            </div>
+
+            <!-- 2. Card Section -->
+            <div id="card-method" class="method-box">
                 <div class="input-group">
-                    <label for="cvv">CVV</label>
-                    <input type="text" id="cvv" placeholder="123" required>
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
+                </div>
+                
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="expiry">Expiry</label>
+                        <input type="text" id="expiry" placeholder="MM/YY">
+                    </div>
+                    <div class="input-group">
+                        <label for="cvv">CVV</label>
+                        <input type="password" id="cvv" placeholder="123" maxlength="3">
+                    </div>
                 </div>
             </div>
 
-            <div class="input-group amount-group">
-                <label for="amount">Amount</label>
-                <div class="amount-container">
-                    <input type="text" id="amount" id="totalPrice" placeholder="1000" required>
+            <!-- 3. Cash on Delivery Section -->
+            <div id="cod-method" class="method-box">
+                <div class="p-3 mb-3" style="background:#e8f8ec; border-radius:6px; color:#1e7e34; font-size:14px;">
+                    ✅ Pay with Cash or UPI when your fresh fruit box arrives at your door.
                 </div>
             </div>
             
-            <div class="input-group">
-                <label for="card-holder">Cardholder Name</label>
-                <input type="text" id="card-holder" placeholder="John Doe" required>
-            </div>
-            
-            <button type="submit" class="pay-button">Pay Now</button>
+            <button type="submit" class="pay-button mt-2">Confirm & Place Order</button>
         </form>
-        <p id="message"></p>
+        <p id="message" style="margin-top: 15px; font-weight: bold;"></p>
     </div>
+    
     <script src="script.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Order Fruits</title>
+    <title>Order Fruits - Farm2Bite</title>
 
     <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -28,7 +28,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="fruit.html">Fruits</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="Login Register Form.html">Order</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="order.html">Order</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
                     <li class="nav-item">
@@ -41,15 +41,15 @@
 
     <!-- Order Page Content -->
     <div class="order-container mt-5" >
-        <h1 class="text-center fw-bold">Order Your Fresh Fruits</h1>
-        <h2 class="text-center lead">Get fresh, organic fruits delivered to your doorstep!</h2>
+        <h1 class="text-center fw-bold">Order Your Fresh Harvest</h1>
+        <h2 class="text-center lead">Crisp, farm-fresh organic produce ready for quick home delivery.</h2>
 
         <!-- Order Form -->
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card shadow-lg p-4">
-                    <h3 class="text-center mb-4">Place Your Order</h3>
-                    <form action="submit_order.php" method="post">
+                    <h3 class="text-center mb-4">Express Checkout</h3>
+                    <form onsubmit="event.preventDefault(); storeOrder();">
                         
                         <div class="mb-3">
                             <label for="name" class="form-label">Full Name:</label>
@@ -63,48 +63,64 @@
 
                         <div class="mb-3">
                             <label for="phone" class="form-label">Phone Number:</label>
-                            <input type="number" id="phone" name="phone" class="form-control" placeholder="Enter your phone number" required>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="10-digit mobile number" required>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="fruit" class="form-label">Select Fruit:</label>
+                                <select id="fruit" name="fruit" class="form-select" onchange="calculateOrderPreview()" required>
+                                    <option value="apple" data-price="140">Apple (₹140/kg)</option>
+                                    <option value="banana" data-price="40">Banana (₹40/kg)</option>
+                                    <option value="mango" data-price="160">Mango (₹160/kg)</option>
+                                    <option value="grapes" data-price="100">Grapes (₹100/kg)</option>
+                                    <option value="orange" data-price="120">Orange (₹120/kg)</option>
+                                    <option value="strawberry" data-price="200">Strawberry (₹200/kg)</option>
+                                    <option value="guava" data-price="90">Guava (₹90/kg)</option>
+                                    <option value="papaya" data-price="140">Papaya (₹140/kg)</option>
+                                    <option value="cherry" data-price="260">Cherry (₹260/kg)</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="quantity" class="form-label">Quantity:</label>
+                                <select id="quantity" name="quantity" class="form-control" onchange="calculateOrderPreview()" required>
+                                    <option value="0.25">250g</option>
+                                    <option value="0.5">500g</option>
+                                    <option value="1" selected>1 kg</option>
+                                    <option value="2">2 kg</option>
+                                    <option value="5">5 kg</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="date" class="form-label">Delivery Date:</label>
+                                <input type="date" id="date" name="date" class="form-control" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="timeslot" class="form-label">Preferred Time Slot:</label>
+                                <select id="timeslot" class="form-select">
+                                    <option value="morning">Morning (7:00 AM - 10:30 AM)</option>
+                                    <option value="afternoon">Afternoon (1:00 PM - 4:00 PM)</option>
+                                    <option value="evening">Evening (6:00 PM - 9:00 PM)</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="mb-3">
-                            <label for="fruit" class="form-label">Select Fruit:</label>
-                            <select id="fruit" name="fruit" class="form-select" required>
-                                <option value="apple">Apple</option>
-                                <option value="banana">Banana</option>
-                                <option value="mango">Mango</option>
-                                <option value="grapes">Grapes</option>
-                                <option value="orange">Orange</option>
-                                <option value="strawberry">Strawberry</option>
-                                <option value="guava">Guava</option>
-                                <option value="papaya">Papaya</option>
-                                <option value="cherry">cherry</option>
-                            </select>
+                            <label for="address" class="form-label">Delivery Address / Landmark:</label>
+                            <textarea id="address" name="address" class="form-control" placeholder="Flat / House No, Street, City, Pincode" required></textarea>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="quantity" class="form-label">Quantity:</label>
-                            <select id="quantity" name="quantity" class="form-control" required onchange="updateAmount()">
-                                <option value="0.25">250g</option>
-                                <option value="0.75">500g</option>
-                                <option value="1">1kg</option>
-                                <option value="2">2kg</option>
-                                <option value="5">5kg</option>
-                            </select>
-                        </div>
-                        
-
-                        <div class="mb-3">
-                            <label for="address" class="form-label">Delivery Address:</label>
-                            <textarea id="address" name="address" class="form-control" placeholder="Enter your full address" required></textarea>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="date" class="form-label">Delivery Date:</label>
-                            <input type="date" id="date" name="date" class="form-control" required>
+                        <!-- Live Price Preview Card -->
+                        <div class="alert alert-warning text-center fw-bold fs-5 my-3">
+                            Estimated Total: <span id="previewPrice" class="text-danger">₹140</span>
                         </div>
 
                         <div class="text-center">
-                            <a href="payment.html" target="_blank" class="btn btn-lg">Place Order</a>
+                            <button type="submit" class="btn btn-lg w-100">Proceed to Payment</button>
                         </div>
                     </form>
                 </div>
@@ -112,5 +128,6 @@
         </div>
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>

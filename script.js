@@ -1,42 +1,50 @@
 //-------------------------------------------------------------------------- LOADING PAGE
 
 document.addEventListener("DOMContentLoaded", () => {
-    if (!sessionStorage.getItem("visited")) {
-        // First-time visit: show loading screen
-        document.getElementById("mainContent").classList.add("hidden");
+    const loadingScreen = document.getElementById("loadingScreen");
+    const mainContent = document.getElementById("mainContent");
+    const startButton = document.getElementById("startButton");
+    const spinner = document.querySelector(".spinner-border");
 
-        setTimeout(() => {
-            document.querySelector(".spinner-border").style.display = "none"; // Hide loader
-            document.getElementById("startButton").style.display = "block"; // Show button smoothly
-            document.getElementById("startButton").classList.add("fade-in"); // Add fade-in animation
-        }, 1000);
-    } else {
-        // If visited before, hide the loading screen immediately
-        document.getElementById("loadingScreen").style.display = "none";
-        document.getElementById("mainContent").classList.remove("hidden");
+    if (loadingScreen && mainContent) {
+        if (!sessionStorage.getItem("visited")) {
+            mainContent.classList.add("hidden");
+
+            setTimeout(() => {
+                if (spinner) spinner.style.display = "none";
+                if (startButton) {
+                    startButton.style.display = "block";
+                    startButton.classList.add("fade-in");
+                }
+            }, 800);
+        } else {
+            loadingScreen.style.display = "none";
+            mainContent.classList.remove("hidden");
+        }
     }
-});
 
-document.getElementById("startButton").addEventListener("click", () => {
-    sessionStorage.setItem("visited", "true"); // Store visit info
-    document.getElementById("loadingScreen").classList.add("hidden");
-    document.getElementById("mainContent").classList.remove("hidden");
+    if (startButton) {
+        startButton.addEventListener("click", () => {
+            sessionStorage.setItem("visited", "true");
+            if (loadingScreen) loadingScreen.classList.add("hidden");
+            if (mainContent) mainContent.classList.remove("hidden");
+        });
+    }
 });
 
 //--------------------------------------------------------------------------LOGIN/REGISTER POP
  
- // Show the popup when the page loads
- window.onload = function () {
+window.addEventListener("load", function () {
     let popup = document.getElementById("welcomePopup");
-    popup.style.display = "block"; // Show popup
+    if (popup) {
+        popup.style.display = "block";
+        setTimeout(() => {
+            popup.style.display = "none";
+        }, 3500);
+    }
+});
 
-    // Hide popup after 3 seconds
-    setTimeout(function () {
-        popup.style.display = "none"; // Hide popup
-    }, 3500);
-};
-
-//---------------------------------------------------------------------------PRICE UPDATE DEPENDES OF QUANTITY (fruits secyion)
+//---------------------------------------------------------------------------PRICE UPDATE DEPENDS ON QUANTITY (fruits section)
 
 function updatePrice(selectElement) {
     let selectedOption = selectElement.options[selectElement.selectedIndex];
@@ -47,48 +55,94 @@ function updatePrice(selectElement) {
     let discountedPriceElement = card.querySelector(".discounted-price");
     let originalPriceElement = card.querySelector(".original-price");
 
-    discountedPriceElement.textContent = "₹" + newPrice;
-    originalPriceElement.textContent = "₹" + originalPrice;
+    if (discountedPriceElement) discountedPriceElement.textContent = "₹" + newPrice;
+    if (originalPriceElement) originalPriceElement.textContent = "₹" + originalPrice;
 }
 
 function showPopup(button) {
     let card = button.closest(".card");
     let popup = card.querySelector(".popup");
 
-    popup.style.display = "block";
-
-    setTimeout(() => {
-        popup.style.display = "none";
-    }, 2000);
+    if (popup) {
+        popup.style.display = "block";
+        setTimeout(() => {
+            popup.style.display = "none";
+        }, 1800);
+    }
 }
 
-//--------------------------------------------------------------------------- SHOW THE PRICE AMOUNT ON THE PAYMENT 
+//--------------------------------------------------------------------------- SEARCH FRUITS QUICK FILTER (Only 6 lines)
+
+function filterFruitCards() {
+    let query = document.getElementById("searchFruit").value.toLowerCase();
+    let cards = document.querySelectorAll(".fruit-item");
+
+    cards.forEach(card => {
+        let fruitName = card.querySelector("h3").innerText.toLowerCase();
+        card.style.display = fruitName.includes(query) ? "block" : "none";
+    });
+}
+
+//--------------------------------------------------------------------------- REAL-TIME ORDER PRICE PREVIEW
+
+function calculateOrderPreview() {
+    let fruit = document.getElementById("fruit");
+    let qty = document.getElementById("quantity");
+    let preview = document.getElementById("previewPrice");
+
+    if (fruit && qty && preview) {
+        let pricePerKg = parseFloat(fruit.options[fruit.selectedIndex].getAttribute("data-price")) || 0;
+        let selectedQty = parseFloat(qty.value) || 1;
+        preview.innerText = "₹" + Math.round(pricePerKg * selectedQty);
+    }
+}
+
+//--------------------------------------------------------------------------- STORE ORDER & REDIRECT
 
 function storeOrder() {
     let fruitSelect = document.getElementById("fruit");
     let quantitySelect = document.getElementById("quantity");
 
-    let pricePerUnit = fruitSelect.options[fruitSelect.selectedIndex].getAttribute("data-price");
-    let quantity = quantitySelect.value;
+    if (fruitSelect && quantitySelect) {
+        let pricePerKg = parseFloat(fruitSelect.options[fruitSelect.selectedIndex].getAttribute("data-price")) || 0;
+        let quantity = parseFloat(quantitySelect.value) || 1;
+        let totalPrice = Math.round(pricePerKg * quantity);
 
-    let totalPrice = (pricePerUnit / 250) * quantity;
-
-    // Store only the total price in localStorage
-    localStorage.setItem("totalPrice", totalPrice);
-
-    // Redirect to payment page
-    window.location.href = "payment.html";
+        localStorage.setItem("totalPrice", totalPrice);
+        window.location.href = "payment.html";
+    }
 }
 
-//--------------------------------------------------------------------------- SHOW THE PRICE AMOUNT ON THE PAYMENT 
+//--------------------------------------------------------------------------- PAYMENT PAGE LOGIC & TAB SWITCH
+
+function switchPayment(method, btn) {
+    document.querySelectorAll(".method-box").forEach(box => box.classList.remove("active"));
+    document.querySelectorAll(".pay-tab-nav button").forEach(b => b.classList.remove("active"));
+    
+    document.getElementById(method + "-method").classList.add("active");
+    btn.classList.add("active");
+}
 
 document.addEventListener("DOMContentLoaded", function() {
-    let totalPrice = localStorage.getItem("totalPrice");
-    if (totalPrice) {
-        document.getElementById("totalPrice").innerText = totalPrice;
-    } else {
-        document.getElementById("totalPrice").innerText = "0";
+    let totalPriceElement = document.getElementById("totalPrice");
+    if (totalPriceElement) {
+        let price = localStorage.getItem("totalPrice");
+        totalPriceElement.value = price ? price : "140";
+    }
+
+    const paymentForm = document.getElementById("payment-form");
+    if (paymentForm) {
+        paymentForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const message = document.getElementById("message");
+            if (message) {
+                message.style.color = "green";
+                message.textContent = "✅ Order placed successfully! Harvest is on its way.";
+            }
+            localStorage.removeItem("totalPrice");
+            setTimeout(() => {
+                window.location.href = "home.html";
+            }, 2500);
+        });
     }
 });
-
-//--------------------------------------------------------------------------- LOGIN REDIRECT
